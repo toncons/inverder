@@ -35,37 +35,37 @@
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-between min-h-screen p-4 scanline">
+<body class="flex flex-col items-center justify-between min-h-screen p-2 sm:p-4 scanline m-0 overflow-hidden">
 
-    <header class="w-full max-w-2xl flex flex-col sm:flex-row items-center justify-between bg-zinc-900/80 border-2 border-emerald-500/50 rounded-xl p-4 mb-4 backdrop-blur shadow-lg">
-        <div class="text-emerald-400 text-xl font-bold tracking-widest mb-2 sm:mb-0 flex items-center gap-2">
+    <header class="w-full max-w-7xl flex flex-col sm:flex-row items-center justify-between bg-zinc-900/90 border-2 border-emerald-500/50 rounded-xl px-4 py-2 mb-2 backdrop-blur shadow-lg z-20">
+        <div class="text-emerald-400 text-sm sm:text-lg font-bold tracking-widest mb-1 sm:mb-0 flex items-center gap-2">
             <span>👾</span> SPACE INVADERS
         </div>
-        <div class="flex gap-6 text-xs sm:text-sm">
+        <div class="flex gap-4 sm:gap-6 text-xs sm:text-sm">
             <div class="flex flex-col items-center">
-                <span class="text-zinc-400 text-[10px]">SCORE</span>
+                <span class="text-zinc-400 text-[9px] sm:text-[10px]">SCORE</span>
                 <span id="scoreVal" class="text-yellow-400 font-bold">000000</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-zinc-400 text-[10px]">HI-SCORE</span>
+                <span class="text-zinc-400 text-[9px] sm:text-[10px]">HI-SCORE</span>
                 <span id="hiScoreVal" class="text-emerald-400 font-bold">000000</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-zinc-400 text-[10px]">LIVES</span>
-                <div id="livesContainer" class="flex gap-1 text-red-500 text-sm mt-1">❤️ ❤️ ❤️</div>
+                <span class="text-zinc-400 text-[9px] sm:text-[10px]">LIVES</span>
+                <div id="livesContainer" class="flex gap-1 text-red-500 text-xs sm:text-sm mt-0.5">❤️ ❤️ ❤️</div>
             </div>
         </div>
     </header>
 
-    <main class="relative w-full max-w-2xl flex flex-col items-center">
-        <div class="relative w-full aspect-[4/3] bg-black border-4 border-emerald-500 rounded-2xl arcade-glow overflow-hidden flex items-center justify-center">
+    <main class="relative flex-1 w-full max-w-7xl flex flex-col items-center justify-center mb-2">
+        <div class="relative w-full h-[calc(100vh-140px)] sm:h-[calc(100vh-150px)] bg-black border-4 border-emerald-500 rounded-2xl arcade-glow overflow-hidden flex items-center justify-center">
             
             <!-- Canvas for Game Rendering -->
             <canvas id="gameCanvas" class="w-full h-full block bg-[#0a0a16]"></canvas>
 
             <!-- Overlay for Start / Game Over / Pause Screens -->
-            <div id="screenOverlay" class="absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-6 text-center z-10 transition-opacity duration-300">
-                <h1 id="overlayTitle" class="text-xl sm:text-2xl text-emerald-400 mb-4 animate-pulse leading-relaxed">SPACE INVADERS</h1>
+            <div id="screenOverlay" class="absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-6 text-center z-30 transition-opacity duration-300">
+                <h1 id="overlayTitle" class="text-xl sm:text-3xl text-emerald-400 mb-4 animate-pulse leading-relaxed">SPACE INVADERS</h1>
                 <p id="overlaySubtitle" class="text-[10px] sm:text-xs text-zinc-300 mb-6 leading-relaxed max-w-md">
                     DEFEND EARTH FROM THE ALIEN HOARD.<br>USE ARROW KEYS OR BUTTONS TO MOVE & SHOOT.
                 </p>
@@ -76,15 +76,15 @@
         </div>
     </main>
 
-    <footer class="w-full max-w-2xl mt-4 flex flex-col items-center gap-3">
+    <footer class="w-full max-w-7xl flex flex-col items-center gap-1 z-20">
         <div class="flex justify-between w-full px-2">
             <div class="flex gap-2">
-                <button id="leftBtn" class="w-16 h-16 bg-zinc-800 hover:bg-zinc-700 active:bg-emerald-600 border-2 border-zinc-600 rounded-xl flex items-center justify-center text-xl shadow-md text-emerald-400 transition-colors">◀</button>
-                <button id="rightBtn" class="w-16 h-16 bg-zinc-800 hover:bg-zinc-700 active:bg-emerald-600 border-2 border-zinc-600 rounded-xl flex items-center justify-center text-xl shadow-md text-emerald-400 transition-colors">▶</button>
+                <button id="leftBtn" class="w-14 h-12 sm:w-16 sm:h-16 bg-zinc-800 hover:bg-zinc-700 active:bg-emerald-600 border-2 border-zinc-600 rounded-xl flex items-center justify-center text-lg shadow-md text-emerald-400 transition-colors">◀</button>
+                <button id="rightBtn" class="w-14 h-12 sm:w-16 sm:h-16 bg-zinc-800 hover:bg-zinc-700 active:bg-emerald-600 border-2 border-zinc-600 rounded-xl flex items-center justify-center text-lg shadow-md text-emerald-400 transition-colors">▶</button>
             </div>
-            <button id="shootBtn" class="w-28 h-16 bg-red-700 hover:bg-red-600 active:bg-red-500 border-2 border-red-400 rounded-xl flex items-center justify-center text-xs font-bold text-white shadow-md transition-colors">FIRE</button>
+            <button id="shootBtn" class="w-24 h-12 sm:w-28 sm:h-16 bg-red-700 hover:bg-red-600 active:bg-red-500 border-2 border-red-400 rounded-xl flex items-center justify-center text-xs font-bold text-white shadow-md transition-colors">FIRE</button>
         </div>
-        <p class="text-[9px] text-zinc-500 text-center">KEYBOARD: [A]/[D] or [←]/[→] to Move, [SPACE] to Shoot, [P] to Pause</p>
+        <p class="text-[8px] sm:text-[9px] text-zinc-500 text-center">KEYBOARD: [A]/[D] or [←]/[→] to Move, [SPACE] to Shoot, [P] to Pause</p>
     </footer>
 
     <script>
@@ -169,20 +169,20 @@
 
         function createInvaders() {
             invaders = [];
-            const rows = 5;
-            const cols = 12;
-            const startX = 40;
-            const startY = 40;
-            const spacingX = 40;
-            const spacingY = 28;
+            const rows = 6;
+            const cols = 16;
+            const startX = 30;
+            const startY = 30;
+            const spacingX = 26;
+            const spacingY = 20;
 
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
                     invaders.push({
                         x: startX + c * spacingX,
                         y: startY + r * spacingY,
-                        w: 22,
-                        h: 14,
+                        w: 14,
+                        h: 10,
                         row: r,
                         alive: true,
                         frame: 0
@@ -195,15 +195,15 @@
             barriers = [];
             const logicalWidth = canvas.clientWidth || 600;
             const logicalHeight = canvas.clientHeight || 450;
-            const barrierCount = 3;
+            const barrierCount = 4;
             const spacing = logicalWidth / (barrierCount + 1);
 
             for (let i = 1; i <= barrierCount; i++) {
                 barriers.push({
-                    x: spacing * i - 30,
-                    y: logicalHeight - 90,
-                    w: 60,
-                    h: 25,
+                    x: spacing * i - 25,
+                    y: logicalHeight - 80,
+                    w: 50,
+                    h: 20,
                     health: 15 // durability blocks
                 });
             }
@@ -609,12 +609,12 @@
             // Draw Invaders
             for (let inv of invaders) {
                 if (!inv.alive) continue;
-                ctx.fillStyle = inv.row === 0 ? '#ec4899' : inv.row === 1 ? '#a855f7' : '#3b82f6';
-                // Simple pixel-art style alien rectangle drawing with eyes (scaled down for smaller invaders)
+                ctx.fillStyle = inv.row === 0 ? '#ec4899' : inv.row === 1 ? '#a855f7' : inv.row === 2 ? '#3b82f6' : '#10b981';
+                // Smaller pixel-art style alien rectangle drawing with eyes
                 ctx.fillRect(inv.x, inv.y, inv.w, inv.h);
                 ctx.fillStyle = '#000000';
-                ctx.fillRect(inv.x + 4, inv.y + 4, 3, 3);
-                ctx.fillRect(inv.x + inv.w - 7, inv.y + 4, 3, 3);
+                ctx.fillRect(inv.x + 3, inv.y + 3, 2, 2);
+                ctx.fillRect(inv.x + inv.w - 5, inv.y + 3, 2, 2);
             }
 
             // Draw UFO
